@@ -30,12 +30,7 @@ class App extends React.Component {
 
 		let colorIndex = Math.floor(Math.random() * 10);
 		colorIndex = colorIndex < 10 ? colorIndex : 4;
-		let r = colors[colorIndex][0];
-		let g = colors[colorIndex][1];
-		let b = colors[colorIndex][2];
-		let yiq = ((r*299)+(g*587)+(b*114))/1000;
-		let tColor = (yiq >= 128) ? 'black' : 'gainsboro';
-		let newColor = `rgb(${r}, ${g}, ${b})`;
+		let newColor = `rgb(${colors[colorIndex][0]}, ${colors[colorIndex][1]}, ${colors[colorIndex][2]})`;
 		if (newColor === this.state.color) {
 			newColor = 'rgb(50, 168, 82)';
 		}
@@ -43,7 +38,6 @@ class App extends React.Component {
 		this.setState({
 			currentQuote: quote,
 			color: newColor,
-			textColor: tColor
 		});
 		document.body.style.backgroundColor = this.state.color;
 	}
@@ -56,7 +50,7 @@ class App extends React.Component {
 		let style={
 			position: 'absolute', left: '50%', top: '50%',
 			transform: 'translate(-50%, -50%)',
-			backgroundColor: 'DodgerBlue',
+			backgroundColor: 'gainsboro',
 			width: 800,
 			height: 300,
 			borderRadius: '20px'
@@ -68,7 +62,7 @@ class App extends React.Component {
 		return (
 			<div style={pageStyle}>
 				<div style = {style}>
-					<QuoteCard newQuote={this.newQuote} textColor={this.state.textColor} currentQuote={this.state.currentQuote} buttonColor={this.state.color}/>
+					<QuoteCard newQuote={this.newQuote} currentQuote={this.state.currentQuote} buttonColor={this.state.color}/>
 				</div>
 			</div>
 		)
@@ -82,17 +76,17 @@ class QuoteCard extends React.Component {
 			left: '50%', top: '50%',
 			transform: 'translate(-50%, -80%)',
 			textAlign: 'center',
-			width: '80%'			
+			width: '80%',
 		}
 		const buttonDivStyle = {
 			position: 'fixed',
 			left: '70%', top: '70%',
-			border: '1px solid ' + this.props.textColor,
+			border: '1px solid gainsboro',
 			marginBottom: '3px',
-			borderRadius: '8px',
+			borderRadius: '8px'			
 		}
 		return (
-			<div style={{width: '100%', height:'100%', color: this.props.textColor}}>
+			<div style={{width: '100%', height:'100%', color: this.props.buttonColor}}>
 				<div style={quoteStyle}>
 					<blockquote>{this.props.currentQuote.content}</blockquote>
 					<span>{this.props.currentQuote.author}</span>
@@ -112,7 +106,7 @@ class NewQuoteButton extends React.Component {
 			padding: '10px',
 			border: 'none',
 			font: 'inherit',
-			color: 'inherit',
+			color: 'gainsboro',
 			backgroundColor: this.props.color,
 			cursor: 'pointer',
 			borderRadius: '8px',
@@ -129,14 +123,14 @@ class NewQuoteButton extends React.Component {
 export default App;
 
 const colors = [
-	[135,137,192], 
-	[16,46,74], 
-	[194,202,232], 
-	[131,128,182], 
-	[35,206,107], 
-	[131,232,186], 
-	[10,35,66], 
-	[44,165,141], 
-	[161,229,171], 
-	[153,247,171]
+	[0,78,100], 
+	[1,142,66], 
+	[99,173,242],
+	[240,93,94], 
+	[127,90,131],
+	[247,208,2], 
+	[130,160,188],
+	[57,106,94],
+	[0,163,95],
+	[0,143,133]
 ];
