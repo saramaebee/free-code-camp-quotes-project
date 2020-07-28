@@ -6,3 +6,14 @@ body {
 body > #root > div {
 	height: 100vh;
 }
+.fa {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 30px;
+	width: 60px;
+	text-align: center;
+	text-decoration: none;
+	color: gainsboro;
+  }
