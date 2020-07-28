@@ -88,7 +88,7 @@ class QuoteCard extends React.Component {
 		const buttonDivStyle = {
 			position: 'fixed',
 			left: '70%', top: '70%',
-			border: '1px solid white',
+			border: '1px solid ' + this.props.textColor,
 			marginBottom: '3px',
 			borderRadius: '8px',
 		}
