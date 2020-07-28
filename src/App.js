@@ -39,6 +39,7 @@ class App extends React.Component {
 			currentQuote: quote,
 			color: newColor,
 		});
+		console.log(this.state.color);
 		document.body.style.backgroundColor = this.state.color;
 	}
 
@@ -126,10 +127,10 @@ const colors = [
 	[0,78,100], 
 	[1,142,66], 
 	[99,173,242],
-	[240,93,94], 
+	[180,93,94], 
 	[127,90,131],
-	[247,208,2], 
-	[130,160,188],
+	[39, 111, 191], 
+	[130,160,180],
 	[57,106,94],
 	[0,163,95],
 	[0,143,133]
