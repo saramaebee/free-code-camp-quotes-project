@@ -30,14 +30,13 @@ class App extends React.Component {
 
 		let colorIndex = Math.floor(Math.random() * 10);
 		colorIndex = colorIndex < 10 ? colorIndex : 4;
-		console.log(colorIndex);
 		let r = colors[colorIndex][0];
 		let g = colors[colorIndex][1];
 		let b = colors[colorIndex][2];
 		let yiq = ((r*299)+(g*587)+(b*114))/1000;
 		let tColor = (yiq >= 128) ? 'black' : 'gainsboro';
 		let newColor = `rgb(${r}, ${g}, ${b})`;
-		if (newColor == this.state.color) {
+		if (newColor === this.state.color) {
 			newColor = 'rgb(50, 168, 82)';
 		}
 		
@@ -119,7 +118,7 @@ class NewQuoteButton extends React.Component {
 			borderRadius: '8px',
 			textAlign: 'center',
 			outline: 'none',
-			transition: 'background-color 0.5s ease;'
+			transition: 'background-color 0.5s ease'
 		}
 		return (
 			<button style={buttonStyle}onClick={this.props.newQuote}>new quote</button>
@@ -130,14 +129,14 @@ class NewQuoteButton extends React.Component {
 export default App;
 
 const colors = [
-	[0,0,255], // blue 
-	[138,43,226], // blueviolet
-	[205,92,92], // indianred
-	[240,128,128], // lightcoral
-	[250,128,114], // salmon
-	[32,178,170], // lightseagreen
-	[25,25,112], // midnightblue
-	[102,51,153], // rebeccapurple
-	[60,179,113], // mediumseagreen
-	[22, 126, 230] // custom
-]
+	[135,137,192], 
+	[16,46,74], 
+	[194,202,232], 
+	[131,128,182], 
+	[35,206,107], 
+	[131,232,186], 
+	[10,35,66], 
+	[44,165,141], 
+	[161,229,171], 
+	[153,247,171]
+];
