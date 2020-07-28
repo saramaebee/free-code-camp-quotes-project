@@ -90,8 +90,7 @@ class QuoteCard extends React.Component {
             paddingBottom: '-30px'
         }
 
-        let tweetUrl = encodeURI('https://twitter.com/intent/tweet?text=' + (this.props.currentQuote.content || 'hi hi hi'));
-        console.log(tweetUrl);
+        let tweetUrl = 'https://twitter.com/intent/tweet?text="' + (this.props.currentQuote.content || 'hi hi hi') + '"';
 
         return (
             <div
@@ -106,7 +105,7 @@ class QuoteCard extends React.Component {
                 </div>
                 <div>
                     <div style={tweetStyle}>
-                        <a href={encodeURI(tweetUrl)} id="tweet-quote" class="fa fa-twitter"></a>
+                        <a href={tweetUrl} id="tweet-quote" class="fa fa-twitter"></a>
                     </div>
                     <div style={buttonDivStyle}>
                         <NewQuoteButton newQuote={this.props.newQuote} color={this.props.buttonColor}/>
