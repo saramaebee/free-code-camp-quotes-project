@@ -39,8 +39,6 @@ class App extends React.Component {
 			currentQuote: quote,
 			color: newColor,
 		});
-		console.log(this.state.color);
-		document.body.style.backgroundColor = this.state.color;
 	}
 
 	componentDidMount() {
@@ -57,8 +55,7 @@ class App extends React.Component {
 			borderRadius: '20px'
 		}
 		let pageStyle = {
-			width: '100%',
-			height: '100%',
+			backgroundColor: this.state.color
 		}
 		return (
 			<div style={pageStyle}>

@@ -5,7 +5,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App id='app' style={{width:'100%', height:'100%', backgroundColor: 'blue'}}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
