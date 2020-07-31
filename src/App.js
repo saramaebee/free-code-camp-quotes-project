@@ -105,7 +105,7 @@ class QuoteCard extends React.Component {
                 </div>
                 <div>
                     <div style={tweetStyle}>
-                        <a href={tweetUrl} id="tweet-quote" class="fa fa-twitter"></a>
+                        <a href={tweetUrl} id="tweet-quote" class="fa fa-twitter" />
                     </div>
                     <div style={buttonDivStyle}>
                         <NewQuoteButton newQuote={this.props.newQuote} color={this.props.buttonColor}/>
