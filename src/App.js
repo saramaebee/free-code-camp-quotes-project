@@ -70,7 +70,8 @@ class QuoteCard extends React.Component {
             top: '50%',
             transform: 'translate(-50%, -50%)',
             textAlign: 'center',
-            width: '80%'
+			width: '80%',
+			transition: 'background-color 2s ease'
         }
 
         let buttonDivStyle = {
