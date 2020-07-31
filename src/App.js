@@ -45,7 +45,8 @@ class App extends React.Component {
         };
 
         let pageStyle = {
-            backgroundColor: this.state.color
+			backgroundColor: this.state.color,
+			transition: 'background-color 2s ease'
         };
 
         return (
@@ -84,7 +85,8 @@ class QuoteCard extends React.Component {
             position: 'fixed',
             left: '2%',
             bottom: '2%',
-            backgroundColor: this.props.buttonColor,
+			backgroundColor: this.props.buttonColor,
+			transition: 'background-color 2s ease',
             borderRadius: '8px',
             marginBottom: '4px',
             paddingBottom: '-30px'
@@ -128,7 +130,7 @@ class NewQuoteButton extends React.Component {
             borderRadius: '8px',
             textAlign: 'center',
             outline: 'none',
-            transition: 'background-color 0.5s ease'
+            transition: 'background-color 2s ease'
         }
         return (
             <button id="new-quote" style={buttonStyle} onClick={this.props.newQuote}>new quote</button>
