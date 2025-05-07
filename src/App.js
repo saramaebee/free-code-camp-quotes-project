@@ -26,7 +26,7 @@ class App extends React.Component {
             : 4;
         let newColor = `rgb(${colors[colorIndex][0]}, ${colors[colorIndex][1]}, ${colors[colorIndex][2]})`;
         if (newColor === this.state.color) {
-            newColor = 'rgb(50, 168, 82)';
+            newColor = 'rgb(40, 120, 70)';
         }
 
         this.setState({currentQuote: quote, color: newColor});
@@ -38,10 +38,11 @@ class App extends React.Component {
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',
-            backgroundColor: 'gainsboro',
+            backgroundColor: 'rgb(240, 240, 240)',
             width: '65%',
             height: '30%',
-            borderRadius: '8px'
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)'
         };
 
         let pageStyle = {
@@ -70,8 +71,9 @@ class QuoteCard extends React.Component {
             top: '50%',
             transform: 'translate(-50%, -50%)',
             textAlign: 'center',
-			width: '80%',
-			transition: 'background-color 2s ease'
+            width: '80%',
+            transition: 'background-color 2s ease',
+            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)'
         }
 
         let buttonDivStyle = {
@@ -86,11 +88,12 @@ class QuoteCard extends React.Component {
             position: 'fixed',
             left: '2%',
             bottom: '2%',
-			backgroundColor: this.props.buttonColor,
-			transition: 'background-color 2s ease',
+            backgroundColor: this.props.buttonColor,
+            transition: 'background-color 2s ease',
             borderRadius: '8px',
             marginBottom: '4px',
-            paddingBottom: '-30px'
+            paddingBottom: '-30px',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
         }
 
         let tweetUrl = 'https://twitter.com/intent/tweet?text="' + (this.props.currentQuote.content || 'hi hi hi') + '"';
@@ -104,7 +107,25 @@ class QuoteCard extends React.Component {
             }}>
                 <div style={quoteStyle}>
                     <div id="text">{this.props.currentQuote.content}</div>
-                    <div id="author">{this.props.currentQuote.author}</div>
+                    <div id="author">
+                        <a 
+                            href={this.props.currentQuote.authorData?.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="author-name"
+                            style={{color: 'inherit', textDecoration: 'none'}}
+                        >
+                            {this.props.currentQuote.author}
+                            <span className="tooltip">
+                                {this.props.currentQuote.authorData?.description && 
+                                    <div><strong>{this.props.currentQuote.authorData.description}</strong></div>
+                                }
+                                {this.props.currentQuote.authorData?.bio && 
+                                    <div style={{marginTop: '5px'}}>{this.props.currentQuote.authorData.bio}</div>
+                                }
+                            </span>
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <div style={tweetStyle}>
@@ -125,13 +146,15 @@ class NewQuoteButton extends React.Component {
             padding: '10px',
             border: 'none',
             font: 'inherit',
-            color: 'gainsboro',
+            color: 'rgb(240, 240, 240)',
             backgroundColor: this.props.color,
             cursor: 'pointer',
             borderRadius: '8px',
             textAlign: 'center',
             outline: 'none',
-            transition: 'background-color 2s ease'
+            transition: 'background-color 2s ease',
+            fontWeight: 'bold',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
         }
         return (
             <button id="new-quote" style={buttonStyle} onClick={this.props.newQuote}>new quote</button>
@@ -140,14 +163,20 @@ class NewQuoteButton extends React.Component {
 }
 
 async function fetchQuotes() {
-    let response = await fetch("https://api.quotable.io/random").then(res => res.json());
+    let response = await fetch("https://api.quotable.kurokeita.dev/api/quotes/random").then(res => res.json());
     let quote = {
-        content: response
+        content: response.quote
             .content
             .toLowerCase(),
-        author: response
+        author: response.quote
             .author
-            .toLowerCase()
+            .name
+            .toLowerCase(),
+        authorData: {
+            bio: response.quote.author.bio,
+            description: response.quote.author.description,
+            link: response.quote.author.link
+        }
     }
     if (quote.content.length > 120) {
         return fetchQuotes();
@@ -162,28 +191,28 @@ const colors = [
         0, 78, 100
     ],
     [
-        1, 142, 66
+        1, 110, 66
     ],
     [
-        99, 173, 242
+        70, 120, 190
     ],
     [
-        180, 93, 94
+        160, 60, 60
     ],
     [
-        127, 90, 131
+        110, 60, 120
     ],
     [
-        39, 111, 191
+        30, 80, 150
     ],
     [
-        130, 160, 180
+        90, 110, 140
     ],
     [
-        57, 106, 94
+        40, 90, 70
     ],
     [
-        0, 163, 95
+        0, 120, 70
     ],
-    [0, 143, 133]
+    [0, 100, 100]
 ];

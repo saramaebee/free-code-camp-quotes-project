@@ -2,6 +2,7 @@ body {
 	transition: background-color 2s ease;
 	font-family: 'Indie Flower';
 	font-size: 28px;
+	font-weight: 500;
 }
 body > #root > div {
 	height: 100vh;
@@ -16,4 +17,41 @@ body > #root > div {
 	text-align: center;
 	text-decoration: none;
 	color: gainsboro;
-  }
+}
+.author-name {
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+}
+.tooltip {
+	visibility: hidden;
+	position: absolute;
+	bottom: 130%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgb(245, 245, 245);
+	color: rgb(60, 60, 60);
+	padding: 10px;
+	border-radius: 8px;
+	min-width: 250px;
+	font-size: 18px;
+	text-align: center;
+	opacity: 0;
+	transition: opacity 0.3s, visibility 0.3s;
+	z-index: 1;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.tooltip::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -8px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: rgb(245, 245, 245) transparent transparent transparent;
+}
+.author-name:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}
